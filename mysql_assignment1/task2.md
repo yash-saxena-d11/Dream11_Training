@@ -17,5 +17,5 @@ Sparse index: In a sparse index, an index entry appears for only some of the sea
 B + -Tree Index Files
 The main disadvantage of the index-sequential file organization is that perfor-mance degrades as the file grows, both for index lookups and for sequential scans through the data. Although this degradation can be remedied by reorganization of the file, frequent reorganizations are undesirable.
 The B + tree index structure is the most widely used of several index structures that maintain their efficiency despite insertion and deletion of data. A B + tree index takes the form of a balanced tree in which every path from the root of the tree to a leaf of the tree is of the same length.
-![A sample B+ tree for instructor file](/home/yash/Downloads/b+tree.png)
+![A sample B+ tree for instructor file](b+tree.png)
 observe that only the leaf nodes contain pointers to actual data.

@@ -1,0 +1,11 @@
+start transaction;
+select @customerNumber:=MAX(customerNumber)+1 from customers;
+insert into customers values(@customerNumber,'testName','tempContact','tempContact','381923','test address',null,'mumbai',null,null,'india',null,null);
+select @orderNumber:=MAX(orderNumber)+1 from orders;
+insert into orders values(@orderNumber,'2020-01-02','2020-01-10','2020-01-07','Shipped',null,@customerNumber);
+select @productCode:=(select distinct(productCode) from products where productLine="Motorcycles" order by rand() limit 1);
+select @priceEach:=(select MSRP from products where productCode=@productCode);
+select @orderLineNumber:=(select distinct(orderLineNumber) from orderdetails order by rand() limit 1);
+insert into orderdetails values (@orderNumber,@productCode,1,@priceEach,@orderLineNumber);
+insert into payments values (@customerNumber,'AB123456','2020-01-02',@priceEach);
+commit;
